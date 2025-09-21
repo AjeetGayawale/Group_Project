@@ -1,13 +1,13 @@
 # app.py
 import streamlit as st
-import pickle
+import joblib
 import pandas as pd
 from fpdf import FPDF
 from datetime import datetime
 
 # ---- Load pipeline (preprocessing + model) ----
 with open("churnmodel_fix.pkl", "rb") as f:
-    pipeline = pickle.load(f)
+    pipeline = joblib.load(f)
 
 st.set_page_config(page_title="Telco Churn Prediction", layout="centered")
 st.title("📊 Telco Customer Churn Prediction Dashboard")
@@ -146,5 +146,6 @@ if st.button("🔍 Predict"):
         
     finally:
         st.write("Prediction attempt finished.")
+
 
     
